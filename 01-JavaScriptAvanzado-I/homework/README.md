@@ -167,5 +167,5 @@ function printing() {
    console.log(4);
 }
 
-printing();
+printing();//1432
 ```
