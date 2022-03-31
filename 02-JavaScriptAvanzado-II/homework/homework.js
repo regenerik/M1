@@ -10,12 +10,15 @@ function counter() {
   var algo = 1;
 
   return function(){
-    return algo++; //Por que si el valor es 1 y se retorna 1++ nos termina dando 1 ? 
+    return algo++;// el ++ queda para después ! return solo devuelve la variable
     //       1 ++
     
   }
 }
-
+/*
+function(x) {
+   return x * x; }
+*/
 function cacheFunction(cb) {
   // Usa closures para crear un caché para la función cb.
   // la función que retornas debe aceptar un solo argumento e invocar a cb con ese argumento
@@ -28,13 +31,13 @@ function cacheFunction(cb) {
   // si la invocas de nuevo con 5, deberia retornar 25 (guardado previament en el cache)
   // Tips, usá un objeto donde cada propiedad sea un argumento, y el valor el resultado.
   // usá hasOwnProperty!
-  var acum = {}
+  var acum = {};
   return function(arg){
     if (acum.hasOwnProperty(arg)){
-    return acum[arg]
-    } else {
-    return acum[arg]=cb(arg)
-    }
+      return acum[arg]
+      } else {
+      return acum[arg]=cb(arg)
+      }
   }
 }
 
@@ -82,7 +85,45 @@ let textoAsteriscos = crearCadena.bind(null,"*","*");
 let textoGuiones = crearCadena.bind(null,"-","-");
 
 let textoUnderscore = crearCadena.bind(null,"_","_");
+//-------Extras ! 
+String.prototype.repeatify = function(int){
+  if(int === 0){
+    return "";
+  }else if(int > 0){
+    let solucion = this.valueOf()
+  	let solucion2 = this.valueOf()
+  	for(let i = 0; i <int -1 ; i++){
+    	solucion += solucion2;
+  	}
+  return solucion;
+  }else if(typeof numero !== "number"){
+    return "Ponete las pilas y escribí un número"
+  }else{
+    return "Escribe un número";
+  }
 
+}
+
+let str = "Hola";
+str.repeatify("g")
+
+
+
+
+//--------------
+let Shape = {
+  type:
+  getType
+}
+
+
+
+
+
+
+
+
+//--------------
 
 
 // No modifiquen nada debajo de esta linea
