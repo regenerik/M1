@@ -16,7 +16,12 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    var sum = 0
+    for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) sum += countArray(array[i])
+        else sum += array[i]
+    }
+    return sum
 }
 
 
@@ -67,7 +72,14 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
-
+    let newQueue = new Queue()    //creamos un nuevo objeto filo
+    while(queueOne.size() || queueTwo.size()){//mientras los queue tengan algo ...
+        let elemOne = queueOne.dequeue() //guardo en una variable el elemento que estoy eliminando
+        let elemTwo = queueTwo.dequeue() //guardo en una variable el segundo elemento que estoy eliminando
+        if(elemOne) newQueue.enqueue(elemOne) //si existe el elemento (asegurando que no es undefined ), ingresamos el elemento guardado a nuestro newQueue
+        if(elemTwo) newQueue.enqueue(elemTwo)  //si existe el elemento (asegurando que no es undefined ), ingresamos el elemento guardado a nuestro newQueue
+    }
+    return newQueue
 }
 
 
@@ -82,14 +94,20 @@ var mergeQueues = function(queueOne, queueTwo) {
 
 var closureMult = function(multiplier) {
     // Tu código aca:
-
+    return function(num){
+        return num * multiplier;
+    }
 }
 
 // Implementar el método sum dentro del prototype de BinarySearchTree
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
+    let sum = this.value
+    if(this.left)sum += this.left.sum()
 
+    if(this.right)sum += this.right.sum()
+    return sum;
 }
 
 module.exports = {
